@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+    <h2>Welcome to Image Converter Online</h2>
+        <div class="box">
+            <form id="upload-form" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+            <input type="text" name="nama" placeholder="masukan nama" class="nama" required><br>
+            <input type="text" name="email" placeholder="masukan email" class="email" required><br>
+            <strong>Files:</strong><br>
+            <input id="file-picker" type="file" name="file" accept="image/*" class="file" multiple required>
+            <div id="msg"></div><br>
+            <input type="submit" value="Convert" id="upload-button" class="submit">
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+
+    $("#file-picker").change(function(){
+
+        var input = document.getElementById('file-picker');
+
+        for (var i=0; i<input.files.length; i++)
+        {
+            var ext= input.files[i].name.substring(input.files[i].name.lastIndexOf('.')+1).toLowerCase()
+
+            if ((ext == 'jpg') || (ext == 'png'))
+            {
+                $("#msg").text("Files are supported")
+            }
+            else
+            {
+                $("#msg").text("Files are NOT supported")
+                document.getElementById("file-picker").value ="";
+            }
+
+        }
+    } );
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Convert.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Converter Berhasil</h2>
+        <div class="box">
+            <h4>Nama : <span>{{a}}</span></h4>
+            <h4>Email : <span>{{b}}</span></h4>
+            <h4>Waktu : <span>{{c}}</span></h4>
+            <table>
+                <tr>
+                    <td>RGB</td>
+                    <td>Grayscale</td>
+                    <td>Blur</td>
+                    <td>Edge</td>
+                </tr>
+                <tr>
+                    <td><img src={{ url_for('send_image', filename=image_name) }}></td>
+                    <td><img src={{ url_for('send_image', filename=image_gray) }}></td>
+                    <td><img src={{ url_for('send_image', filename=image_blur) }}></td>
+                    <td><img src={{ url_for('send_image', filename=image_edge) }}></td>
+                </tr>
+            </table>
+        </div>
+	
+	<button><a href="/">Back to Home</a></button>
+    </div>
+</body>
+</html>
